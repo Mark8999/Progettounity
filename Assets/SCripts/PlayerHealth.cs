@@ -11,11 +11,15 @@ public class PlayerHealth : MonoBehaviour
     public GameObject LaserRifleSpread;
     public GameObject UImanager;
     private UIManager uimanager;
+    public Text MyLife;
+    public static int LifeNum;
+    public GameObject Player;
+                    
 
-   
     // Start is called before the first frame update
     void Start()
     {
+        LifeNum = 10;
         health = maxHealth;
         uimanager = UImanager.GetComponent<UIManager>();
         
@@ -23,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        LifeNum -= 1;
         if (health <= 0)
         {
             uimanager.GameOver();
@@ -30,11 +35,13 @@ public class PlayerHealth : MonoBehaviour
             
 
         }
+      
     }
     
     // Update is called once per frame
     void Update()
     {
+        MyLife.text = "Armor plate : " + LifeNum;
         if (Score.ScoreNum >= 400)
         {
             LaserGun.SetActive(false);

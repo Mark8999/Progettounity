@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         MyLife.text = "Armor plate : " + LifeNum;
-        if (Score.ScoreNum >= 400)
+        if (Score.ScoreNum >= 300)
         {
             LaserGun.SetActive(false);
             LaserRifleSpread.SetActive(true);

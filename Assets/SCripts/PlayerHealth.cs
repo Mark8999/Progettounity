@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -14,11 +15,13 @@ public class PlayerHealth : MonoBehaviour
     public Text MyLife;
     public static int LifeNum;
     public GameObject Player;
-                    
+    public Score score;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        score = FindObjectOfType<Score>();
         LifeNum = 10;
         health = maxHealth;
         uimanager = UImanager.GetComponent<UIManager>();
@@ -42,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         MyLife.text = "Armor plate : " + LifeNum;
-        if (Score.ScoreNum >= 300)
+        if (score.ScoreNum >= 300)
         {
             LaserGun.SetActive(false);
             LaserRifleSpread.SetActive(true);

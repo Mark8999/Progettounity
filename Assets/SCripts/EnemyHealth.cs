@@ -8,9 +8,11 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 10;
     public int health;
     public GameObject Enemy;
+    public Score score;
     // Start is called before the first frame update
     void Start()
     {
+        score = FindObjectOfType<Score>();
         health = maxHealth;
     }
     public void TakeDamage(int damage)
@@ -29,10 +31,11 @@ public class EnemyHealth : MonoBehaviour
     }
     public void OnDestroy()
     {
+        score.ScoreNum += 100;
         if (Enemy.IsDestroyed())
         {
-            Score.ScoreNum += 100;
-            print(Score.ScoreNum);
+            
+            print(score.ScoreNum);
         }
     }
 }
